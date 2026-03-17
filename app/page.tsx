@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white" style={{ fontFamily: "var(--font-geist-sans), Arial, sans-serif" }}>
@@ -64,7 +66,8 @@ export default function Home() {
 
       {/* About */}
       <section id="about" style={{ padding: "96px 32px", background: "rgba(255,255,255,0.02)" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 64, alignItems: "start" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 64, alignItems: "start", marginBottom: 64 }}>
           <div>
             <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#f472b6", fontWeight: 600, marginBottom: 16 }}>About Me</p>
             <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, lineHeight: 1.15, marginBottom: 24 }}>
@@ -84,18 +87,31 @@ export default function Home() {
               I am based in the Lehigh Valley, Pennsylvania, where I continue building digital projects and working with entrepreneurs and small businesses.
             </p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-            {[
-              { number: "2", label: "Businesses Founded" },
-              { number: "A.A.S.", label: "Hospitality Management" },
-              { number: "Licensed", label: "Insurance Broker" },
-              { number: "Web &", label: "Digital Projects" },
-            ].map((stat) => (
-              <div key={stat.label} style={{ borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 24 }}>
-                <div style={{ fontSize: 22, fontWeight: 900, background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 4 }}>{stat.number}</div>
-                <div style={{ fontSize: 13, color: "rgba(255,255,255,0.45)" }}>{stat.label}</div>
-              </div>
-            ))}
+          <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+            {/* Photo */}
+            <div style={{ borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", aspectRatio: "4/5", position: "relative", maxWidth: 340 }}>
+              <Image
+                src="/headshot.jpg"
+                alt="Lydia Rich"
+                fill
+                style={{ objectFit: "cover", objectPosition: "center top" }}
+              />
+            </div>
+            {/* Stat cards */}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              {[
+                { number: "2", label: "Businesses Founded" },
+                { number: "A.A.S.", label: "Hospitality Management" },
+                { number: "Licensed", label: "Insurance Broker" },
+                { number: "Web &", label: "Digital Projects" },
+              ].map((stat) => (
+                <div key={stat.label} style={{ borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 20 }}>
+                  <div style={{ fontSize: 20, fontWeight: 900, background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 4 }}>{stat.number}</div>
+                  <div style={{ fontSize: 12, color: "rgba(255,255,255,0.45)" }}>{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
           </div>
         </div>
       </section>
