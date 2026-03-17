@@ -100,10 +100,10 @@ export default function Home() {
             {/* Stat cards */}
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
               {[
-                { number: "2", label: "Businesses Founded" },
-                { number: "A.A.S.", label: "Hospitality Management" },
-                { number: "Licensed", label: "Insurance Broker" },
-                { number: "Web &", label: "Digital Projects" },
+                { number: "Builder", label: "Websites, Businesses & AI-Powered Projects" },
+                { number: "Creative", label: "Branding, Design & Content Creation" },
+                { number: "Licensed", label: "Health Insurance Broker" },
+                { number: "Operator", label: "End-to-End Business Operations" },
               ].map((stat) => (
                 <div key={stat.label} style={{ borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 20 }}>
                   <div style={{ fontSize: 20, fontWeight: 900, background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 4 }}>{stat.number}</div>
