@@ -91,7 +91,7 @@ export default function Home() {
             {/* Photo */}
             <div style={{ borderRadius: 20, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", aspectRatio: "4/5", position: "relative", maxWidth: 340 }}>
               <Image
-                src="/headshot.jpg"
+                src="/headshot.JPG"
                 alt="Lydia Rich"
                 fill
                 style={{ objectFit: "cover", objectPosition: "center top" }}
