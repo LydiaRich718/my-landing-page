@@ -68,20 +68,20 @@ export default function Home() {
           <div>
             <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#f472b6", fontWeight: 600, marginBottom: 16 }}>About Me</p>
             <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, lineHeight: 1.15, marginBottom: 24 }}>
-              Built from{" "}
-              <span style={{ background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>experience</span>
+              Professional{" "}
+              <span style={{ background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>Background</span>
             </h2>
             <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: 18, fontSize: 15 }}>
-              I started in hospitality — got my degree in restaurant and hospitality management, worked my way into leadership roles at places like Starbucks and the Ritz-Carlton, and learned what it actually means to run an operation under pressure.
+              My career began in hospitality. I earned an Associate&apos;s degree in Restaurant and Hospitality Management, which gave me a strong foundation in customer service, team leadership, and operations. I went on to hold management roles at Starbucks and worked in reservations at The Ritz-Carlton.
             </p>
             <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: 18, fontSize: 15 }}>
-              From there I went out on my own. I launched an Etsy shop, designed merchandise and fundraising apparel for community projects, and eventually founded Gulf Coast Polished Pros — a cleaning business I built from scratch, handling everything from pricing and scheduling to hiring and client management.
+              From there I began building independently. I launched an Etsy shop where I designed and sold merchandise, created custom apparel for community fundraising events, and founded Gulf Coast Polished Pros — a cleaning business I launched and operated on my own, managing everything from client acquisition and scheduling to pricing and day-to-day operations.
             </p>
             <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: 18, fontSize: 15 }}>
-              I got my health insurance broker&apos;s license, spent time supporting startup marketing through Zuyzo, and somewhere along the way started building websites using AI tools and modern development platforms. Now I&apos;m doing all of it — and this site is proof.
+              More recently, I earned my health insurance broker license, supported startup marketing and operations through Zuyzo, and began building websites using modern AI-assisted development tools and platforms.
             </p>
             <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.9, fontSize: 15 }}>
-              I&apos;m based on the Gulf Coast and I work with people who need someone who can figure things out, build things, and get them done.
+              I am based in the Lehigh Valley, Pennsylvania, where I continue building digital projects and working with entrepreneurs and small businesses.
             </p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
@@ -89,7 +89,7 @@ export default function Home() {
               { number: "2", label: "Businesses Founded" },
               { number: "A.A.S.", label: "Hospitality Management" },
               { number: "Licensed", label: "Insurance Broker" },
-              { number: "4+", label: "Websites Built" },
+              { number: "Web &", label: "Digital Projects" },
             ].map((stat) => (
               <div key={stat.label} style={{ borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 24 }}>
                 <div style={{ fontSize: 22, fontWeight: 900, background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 4 }}>{stat.number}</div>
