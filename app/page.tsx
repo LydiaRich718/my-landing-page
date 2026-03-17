@@ -7,10 +7,10 @@ export default function Home() {
       {/* Nav */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-5" style={{ background: "rgba(10,10,15,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <span className="text-xl font-bold" style={{ background: "linear-gradient(to right, #a78bfa, #f472b6, #fb923c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
-          Lydia
+          Lydia Rich
         </span>
-        <div className="hidden md:flex gap-8 text-sm" style={{ color: "rgba(255,255,255,0.6)" }}>
-          {["About", "Experience", "Skills", "Projects", "Contact"].map((item) => (
+        <div className="hidden md:flex gap-8 text-sm">
+          {["About", "Work", "Projects", "Skills", "Contact"].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.6)")}
@@ -18,11 +18,10 @@ export default function Home() {
           ))}
         </div>
         <a
-          href="/resume.pdf"
-          download
+          href="#contact"
           style={{ background: "linear-gradient(to right, #7c3aed, #ec4899)", padding: "8px 20px", borderRadius: "9999px", fontSize: "14px", fontWeight: 600, color: "white", textDecoration: "none" }}
         >
-          Download Resume
+          Let&apos;s Connect
         </a>
       </nav>
 
@@ -32,9 +31,9 @@ export default function Home() {
         <div style={{ position: "absolute", top: "35%", left: "20%", width: 400, height: 400, background: "rgba(236,72,153,0.1)", borderRadius: "50%", filter: "blur(100px)", pointerEvents: "none" }} />
         <div style={{ position: "relative", maxWidth: 900, margin: "0 auto", width: "100%" }}>
           <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#a78bfa", fontWeight: 600, marginBottom: 24 }}>
-            Professional Portfolio
+            Entrepreneur · Creative Operator · Licensed Insurance Professional · AI-Assisted Web Builder
           </p>
-          <h1 style={{ fontSize: "clamp(64px, 12vw, 128px)", fontWeight: 900, lineHeight: 1, marginBottom: 32 }}>
+          <h1 style={{ fontSize: "clamp(56px, 10vw, 112px)", fontWeight: 900, lineHeight: 1, marginBottom: 32 }}>
             <span style={{ background: "linear-gradient(to bottom right, white, rgba(255,255,255,0.5))", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
               Hi, I&apos;m
             </span>
@@ -43,17 +42,15 @@ export default function Home() {
               Lydia.
             </span>
           </h1>
-          <p style={{ fontSize: "clamp(16px, 2.5vw, 22px)", color: "rgba(255,255,255,0.55)", maxWidth: 680, lineHeight: 1.7, marginBottom: 40 }}>
-            Marketing strategist, social media manager, licensed insurance professional, and emerging web developer — I bring creative energy and business savvy to everything I do.
+          <p style={{ fontSize: "clamp(16px, 2.5vw, 20px)", color: "rgba(255,255,255,0.55)", maxWidth: 620, lineHeight: 1.8, marginBottom: 40 }}>
+            I build businesses, creative projects, and websites using modern tools and a lot of figuring-it-out-as-I-go energy. From running a cleaning company on the Gulf Coast to building AI-assisted landing pages — I make things happen.
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 16 }}>
             <a
-              href="/resume.pdf"
-              download
+              href="#projects"
               style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 32px", borderRadius: "9999px", fontWeight: 600, background: "linear-gradient(to right, #7c3aed, #ec4899, #f97316)", color: "white", textDecoration: "none", fontSize: 15 }}
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-              Download Resume
+              See My Work
             </a>
             <a
               href="#contact"
@@ -67,26 +64,32 @@ export default function Home() {
 
       {/* About */}
       <section id="about" style={{ padding: "96px 32px", background: "rgba(255,255,255,0.02)" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 64, alignItems: "center" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 64, alignItems: "start" }}>
           <div>
             <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#f472b6", fontWeight: 600, marginBottom: 16 }}>About Me</p>
             <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, lineHeight: 1.15, marginBottom: 24 }}>
-              Multi-skilled{" "}
-              <span style={{ background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>professional</span>
+              Built from{" "}
+              <span style={{ background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>experience</span>
             </h2>
-            <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.8, marginBottom: 16, fontSize: 15 }}>
-              I&apos;ve built experience across marketing, client services, business ownership, and healthcare — and now I&apos;m adding technology to the mix. I&apos;m passionate about combining creativity with strategy to solve real problems.
+            <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: 18, fontSize: 15 }}>
+              I started in hospitality — got my degree in restaurant and hospitality management, worked my way into leadership roles at places like Starbucks and the Ritz-Carlton, and learned what it actually means to run an operation under pressure.
             </p>
-            <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.8, fontSize: 15 }}>
-              With an Associate&apos;s Degree in Hospitality Management, a Health Insurance License, and hands-on experience running my own business, I understand what it takes to deliver results from the ground up.
+            <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: 18, fontSize: 15 }}>
+              From there I went out on my own. I launched an Etsy shop, designed merchandise and fundraising apparel for community projects, and eventually founded Gulf Coast Polished Pros — a cleaning business I built from scratch, handling everything from pricing and scheduling to hiring and client management.
+            </p>
+            <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.9, marginBottom: 18, fontSize: 15 }}>
+              I got my health insurance broker&apos;s license, spent time supporting startup marketing through Zuyzo, and somewhere along the way started building websites using AI tools and modern development platforms. Now I&apos;m doing all of it — and this site is proof.
+            </p>
+            <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.9, fontSize: 15 }}>
+              I&apos;m based on the Gulf Coast and I work with people who need someone who can figure things out, build things, and get them done.
             </p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
             {[
-              { number: "5+", label: "Years in Marketing" },
-              { number: "1", label: "Business Founded" },
-              { number: "Licensed", label: "Insurance Professional" },
-              { number: "A.A.S.", label: "Hospitality Mgmt" },
+              { number: "2", label: "Businesses Founded" },
+              { number: "A.A.S.", label: "Hospitality Management" },
+              { number: "Licensed", label: "Insurance Broker" },
+              { number: "4+", label: "Websites Built" },
             ].map((stat) => (
               <div key={stat.label} style={{ borderRadius: 16, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 24 }}>
                 <div style={{ fontSize: 22, fontWeight: 900, background: "linear-gradient(to right, #a78bfa, #f472b6)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", marginBottom: 4 }}>{stat.number}</div>
@@ -97,120 +100,47 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Experience */}
-      <section id="experience" style={{ padding: "96px 32px" }}>
+      {/* What I Work On */}
+      <section id="work" style={{ padding: "96px 32px" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#fb923c", fontWeight: 600, marginBottom: 16 }}>Work History</p>
-          <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, marginBottom: 48 }}>Experience</h2>
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+          <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#fb923c", fontWeight: 600, marginBottom: 16 }}>Areas</p>
+          <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, marginBottom: 16 }}>What I Work On</h2>
+          <p style={{ color: "rgba(255,255,255,0.45)", marginBottom: 56, maxWidth: 520, fontSize: 15, lineHeight: 1.75 }}>
+            I don&apos;t fit neatly into one box — and I&apos;ve stopped trying to. Here&apos;s where I spend my time.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>
             {[
               {
-                role: "Marketing & Social Media Manager",
-                company: "Freelance / Professional",
-                period: "Ongoing",
-                description: "Manage brand presence, content calendars, and audience engagement across platforms including Instagram, Facebook, and TikTok. Drive growth through targeted campaigns, analytics, and community management.",
-                tags: ["Social Media", "Content Strategy", "Brand Management", "Analytics"],
+                icon: "🚀",
+                title: "Entrepreneurship",
                 accent: "#a78bfa",
+                body: "Running and launching businesses from the ground up. I&apos;ve done the pricing spreadsheets, the client calls, the hiring, the branding — all of it. I know what it takes to get something off the ground and keep it going.",
               },
               {
-                role: "Owner & Operator",
-                company: "Professional Cleaning Business",
-                period: "Previous",
-                description: "Founded and operated a professional cleaning business — handling everything from client acquisition and scheduling to staff management and quality control. Developed strong operations, sales, and customer service skills.",
-                tags: ["Business Ownership", "Operations", "Sales", "Client Relations"],
+                icon: "🎨",
+                title: "Creative Work",
                 accent: "#f472b6",
+                body: "Branding, merchandise design, social media content, and digital graphics. I&apos;ve designed shirts and hats for community fundraisers, an independent book launch, and my own businesses.",
               },
               {
-                role: "Licensed Health Insurance Professional",
-                company: "Insurance Industry",
-                period: "Licensed",
-                description: "Hold a state health insurance license. Knowledgeable in policy offerings, client needs assessment, compliance, and insurance products.",
-                tags: ["Health Insurance", "Compliance", "Client Consulting", "Licensed"],
-                accent: "#fb923c",
-              },
-              {
-                role: "Hospitality & Service Management",
-                company: "Hospitality Industry",
-                period: "A.A.S. Degree",
-                description: "Completed an Associate of Applied Science in Hospitality Management. Background in guest services, event coordination, and team leadership in fast-paced service environments.",
-                tags: ["Hospitality", "Guest Services", "Team Leadership", "Event Coordination"],
-                accent: "#facc15",
-              },
-              {
-                role: "Entry-Level Web Developer",
-                company: "Personal Projects",
-                period: "Emerging",
-                description: "Building web applications using Next.js, React, Tailwind CSS, and AI-assisted development. Growing technical skills through hands-on project work — including this portfolio.",
-                tags: ["Next.js", "React", "Tailwind CSS", "AI-Assisted Dev"],
+                icon: "💻",
+                title: "Technology",
                 accent: "#34d399",
-              },
-            ].map((exp) => (
-              <div key={exp.role} style={{ borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.03)", padding: 32 }}>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8, alignItems: "baseline", marginBottom: 16 }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: exp.accent, marginRight: 8 }}>{exp.period}</span>
-                  <h3 style={{ fontSize: 18, fontWeight: 700, color: "white", margin: 0 }}>{exp.role}</h3>
-                  <span style={{ fontSize: 13, color: "rgba(255,255,255,0.35)", marginLeft: 4 }}>— {exp.company}</span>
-                </div>
-                <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.75, marginBottom: 20, fontSize: 14 }}>{exp.description}</p>
-                <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                  {exp.tags.map((tag) => (
-                    <span key={tag} style={{ padding: "4px 12px", fontSize: 12, fontWeight: 500, borderRadius: 9999, background: "rgba(255,255,255,0.08)", color: "rgba(255,255,255,0.55)" }}>{tag}</span>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Skills */}
-      <section id="skills" style={{ padding: "96px 32px", background: "rgba(255,255,255,0.02)" }}>
-        <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#a78bfa", fontWeight: 600, marginBottom: 16 }}>What I Bring</p>
-          <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, marginBottom: 48 }}>Skills</h2>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 20 }}>
-            {[
-              {
-                category: "Marketing & Social",
-                accent: "#a78bfa",
-                skills: ["Social Media Strategy", "Content Creation", "Brand Management", "Audience Growth", "Campaign Analytics", "Community Management"],
+                body: "Building websites and digital projects using AI tools and modern development platforms like Next.js, VS Code, and Vercel. I pair tools like Claude with real coding workflows to create things that actually ship.",
               },
               {
-                category: "Business & Operations",
-                accent: "#f472b6",
-                skills: ["Business Ownership", "Client Relations", "Team Management", "Scheduling & Operations", "Sales", "Customer Service"],
-              },
-              {
-                category: "Insurance & Compliance",
+                icon: "🏥",
+                title: "Insurance",
                 accent: "#fb923c",
-                skills: ["Health Insurance (Licensed)", "Policy Analysis", "Client Needs Assessment", "Regulatory Compliance"],
+                body: "Licensed health insurance broker. I help clients understand their coverage options and navigate a system that&apos;s genuinely confusing. Clear explanations, no pressure.",
               },
-              {
-                category: "Hospitality",
-                accent: "#facc15",
-                skills: ["Guest Services", "Event Coordination", "Hospitality Management", "Team Leadership", "Problem-Solving"],
-              },
-              {
-                category: "Technology",
-                accent: "#34d399",
-                skills: ["Next.js / React", "Tailwind CSS", "HTML & CSS", "AI-Assisted Dev (Claude)", "Microsoft Office", "Google Suite"],
-              },
-              {
-                category: "Soft Skills",
-                accent: "#67e8f9",
-                skills: ["Communication", "Adaptability", "Creative Thinking", "Time Management", "Entrepreneurial Mindset", "Attention to Detail"],
-              },
-            ].map((group) => (
-              <div key={group.category} style={{ borderRadius: 20, border: `1px solid ${group.accent}30`, background: "rgba(255,255,255,0.03)", padding: 24 }}>
-                <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: group.accent, marginBottom: 16 }}>{group.category}</h3>
-                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 8 }}>
-                  {group.skills.map((skill) => (
-                    <li key={skill} style={{ fontSize: 13, color: "rgba(255,255,255,0.55)", display: "flex", alignItems: "center", gap: 8 }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: group.accent, opacity: 0.7, flexShrink: 0 }} />
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
+            ].map((area) => (
+              <div key={area.title} style={{ borderRadius: 20, border: `1px solid ${area.accent}25`, background: "rgba(255,255,255,0.03)", padding: 32 }}>
+                <div style={{ fontSize: 28, marginBottom: 16 }}>{area.icon}</div>
+                <h3 style={{ fontSize: 18, fontWeight: 700, marginBottom: 12, color: area.accent }}>{area.title}</h3>
+                <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.8, fontSize: 14 }}
+                  dangerouslySetInnerHTML={{ __html: area.body.replace(/&apos;/g, "'") }}
+                />
               </div>
             ))}
           </div>
@@ -218,45 +148,60 @@ export default function Home() {
       </section>
 
       {/* Projects */}
-      <section id="projects" style={{ padding: "96px 32px" }}>
+      <section id="projects" style={{ padding: "96px 32px", background: "rgba(255,255,255,0.02)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#f472b6", fontWeight: 600, marginBottom: 16 }}>Work Samples</p>
+          <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#f472b6", fontWeight: 600, marginBottom: 16 }}>Featured Work</p>
           <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, marginBottom: 16 }}>Projects</h2>
-          <p style={{ color: "rgba(255,255,255,0.45)", marginBottom: 48, maxWidth: 480, fontSize: 15 }}>A selection of projects and initiatives — from marketing campaigns to web development work.</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
+          <p style={{ color: "rgba(255,255,255,0.45)", marginBottom: 56, maxWidth: 520, fontSize: 15, lineHeight: 1.75 }}>
+            Things I&apos;ve built, launched, or shipped — across business, design, and tech.
+          </p>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 24 }}>
             {[
               {
-                title: "This Portfolio",
-                description: "Designed and built a full professional portfolio using Next.js, React, and Tailwind CSS with AI-assisted development.",
-                tags: ["Next.js", "React", "Web Dev"],
+                title: "LydiaRich.com",
+                label: "Web Development",
+                description: "This portfolio site. Designed and built by me using Next.js, React, and AI-assisted development tools. It&apos;s a working example of the kind of websites I can build for clients — modern, fast, and deployed on professional infrastructure.",
+                tags: ["Next.js", "React", "Vercel", "AI-Assisted"],
                 gradientFrom: "rgba(124,58,237,0.2)",
                 gradientTo: "rgba(236,72,153,0.15)",
+                accent: "#a78bfa",
               },
               {
-                title: "Social Media Campaigns",
-                description: "Managed and grew brand accounts across Instagram, Facebook, and TikTok — increasing engagement through strategic content and analytics.",
-                tags: ["Instagram", "TikTok", "Content", "Analytics"],
-                gradientFrom: "rgba(236,72,153,0.2)",
-                gradientTo: "rgba(249,115,22,0.15)",
+                title: "SnapPLC Landing Page",
+                label: "Startup Marketing",
+                description: "A futuristic AI product landing page built as part of a startup marketing experiment. Designed to look and feel like a real industrial AI platform — complete with animated diagnostics, fake module detection, and engineer humor hidden in plain sight.",
+                tags: ["Next.js", "Product Design", "Marketing", "Humor"],
+                gradientFrom: "rgba(27,111,228,0.2)",
+                gradientTo: "rgba(13,79,168,0.15)",
+                accent: "#60a5fa",
               },
               {
-                title: "Cleaning Business Launch",
-                description: "Founded and scaled a professional cleaning business — including branding, client acquisition, operations, and team management.",
-                tags: ["Entrepreneurship", "Operations", "Branding"],
+                title: "Gulf Coast Polished Pros",
+                label: "Entrepreneurship",
+                description: "Founded and ran a professional cleaning business on the Gulf Coast. Built from zero — I handled the branding, pricing, client acquisition, scheduling, hiring, and day-to-day operations. Real business, real clients, real lessons.",
+                tags: ["Business Launch", "Operations", "Branding", "Sales"],
                 gradientFrom: "rgba(249,115,22,0.2)",
                 gradientTo: "rgba(250,204,21,0.1)",
+                accent: "#fb923c",
               },
               {
-                title: "More Coming Soon",
-                description: "Additional projects and work samples are being added. Reach out to learn more about what I&apos;ve worked on.",
-                tags: ["In Progress"],
-                gradientFrom: "rgba(124,58,237,0.08)",
-                gradientTo: "rgba(103,232,249,0.08)",
+                title: "Custom Merchandise Design",
+                label: "Creative Work",
+                description: "Designed shirts, hats, and branded merchandise for community fundraisers and an independent book launch. From concept to print-ready files — handling artwork, layout, and vendor coordination.",
+                tags: ["Canva", "Merchandise", "Fundraising", "Branding"],
+                gradientFrom: "rgba(236,72,153,0.2)",
+                gradientTo: "rgba(167,139,250,0.1)",
+                accent: "#f472b6",
               },
             ].map((project) => (
-              <div key={project.title} style={{ borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)", background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`, padding: 28 }}>
-                <h3 style={{ fontSize: 17, fontWeight: 700, marginBottom: 10, color: "white" }}>{project.title}</h3>
-                <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.7, marginBottom: 20, fontSize: 14 }}>{project.description}</p>
+              <div key={project.title} style={{ borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)", background: `linear-gradient(135deg, ${project.gradientFrom}, ${project.gradientTo})`, padding: 28, display: "flex", flexDirection: "column" }}>
+                <div style={{ marginBottom: 12 }}>
+                  <span style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase", color: project.accent }}>{project.label}</span>
+                </div>
+                <h3 style={{ fontSize: 20, fontWeight: 700, marginBottom: 12, color: "white" }}>{project.title}</h3>
+                <p style={{ color: "rgba(255,255,255,0.55)", lineHeight: 1.75, marginBottom: 24, fontSize: 14, flex: 1 }}
+                  dangerouslySetInnerHTML={{ __html: project.description.replace(/&apos;/g, "'") }}
+                />
                 <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
                   {project.tags.map((tag) => (
                     <span key={tag} style={{ padding: "4px 12px", fontSize: 12, fontWeight: 500, borderRadius: 9999, background: "rgba(255,255,255,0.1)", color: "rgba(255,255,255,0.55)" }}>{tag}</span>
@@ -268,14 +213,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Skills */}
+      <section id="skills" style={{ padding: "96px 32px" }}>
+        <div style={{ maxWidth: 900, margin: "0 auto" }}>
+          <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#a78bfa", fontWeight: 600, marginBottom: 16 }}>Tools & Strengths</p>
+          <h2 style={{ fontSize: "clamp(32px, 5vw, 48px)", fontWeight: 900, marginBottom: 56 }}>Skills</h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 20 }}>
+            {[
+              {
+                category: "Creative",
+                accent: "#f472b6",
+                skills: ["Canva", "Merchandise & Apparel Design", "Branding", "Social Media Content", "Graphic Layout", "Print-Ready File Prep"],
+              },
+              {
+                category: "Technology",
+                accent: "#34d399",
+                skills: ["AI Tools (Claude, ChatGPT)", "VS Code", "Next.js & React", "Website Development", "Domain & Hosting Setup", "Git & GitHub", "Vercel Deployment"],
+              },
+              {
+                category: "Business Operations",
+                accent: "#fb923c",
+                skills: ["Client Communication", "Entrepreneurship", "Invoicing & Billing", "Zoho Books", "Scheduling & Operations", "Google Drive & Docs", "Excel & Spreadsheets"],
+              },
+            ].map((group) => (
+              <div key={group.category} style={{ borderRadius: 20, border: `1px solid ${group.accent}30`, background: "rgba(255,255,255,0.03)", padding: 24 }}>
+                <h3 style={{ fontSize: 11, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: group.accent, marginBottom: 20 }}>{group.category}</h3>
+                <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: 10 }}>
+                  {group.skills.map((skill) => (
+                    <li key={skill} style={{ fontSize: 14, color: "rgba(255,255,255,0.6)", display: "flex", alignItems: "center", gap: 10 }}>
+                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: group.accent, opacity: 0.7, flexShrink: 0 }} />
+                      {skill}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Contact */}
       <section id="contact" style={{ padding: "96px 32px", background: "rgba(255,255,255,0.02)" }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
           <div style={{ borderRadius: 32, border: "1px solid rgba(255,255,255,0.1)", background: "linear-gradient(135deg, rgba(124,58,237,0.2), rgba(236,72,153,0.15), rgba(249,115,22,0.1))", padding: "clamp(48px, 8vw, 80px)", textAlign: "center" }}>
             <p style={{ fontSize: 12, letterSpacing: "0.3em", textTransform: "uppercase", color: "#f472b6", fontWeight: 600, marginBottom: 16 }}>Let&apos;s Work Together</p>
-            <h2 style={{ fontSize: "clamp(32px, 6vw, 60px)", fontWeight: 900, marginBottom: 20 }}>Get In Touch</h2>
-            <p style={{ color: "rgba(255,255,255,0.55)", maxWidth: 480, margin: "0 auto 40px", lineHeight: 1.75, fontSize: 15 }}>
-              Open to marketing roles, social media contracts, insurance opportunities, and web development projects. Let&apos;s connect.
+            <h2 style={{ fontSize: "clamp(32px, 6vw, 56px)", fontWeight: 900, marginBottom: 20 }}>Got a project?<br />Let&apos;s talk.</h2>
+            <p style={{ color: "rgba(255,255,255,0.55)", maxWidth: 500, margin: "0 auto 40px", lineHeight: 1.85, fontSize: 15 }}>
+              Whether you need a website built, a brand put together, help with insurance, or just want to collaborate on something — I&apos;m open to it. Reach out and let&apos;s figure out what we can make.
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 16, justifyContent: "center" }}>
               <a
@@ -294,14 +278,6 @@ export default function Home() {
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
                 LinkedIn
               </a>
-              <a
-                href="/resume.pdf"
-                download
-                style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "14px 28px", borderRadius: "9999px", fontWeight: 600, border: "1px solid rgba(255,255,255,0.2)", color: "white", textDecoration: "none", fontSize: 14 }}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
-                Download Resume
-              </a>
             </div>
           </div>
         </div>
@@ -309,7 +285,7 @@ export default function Home() {
 
       {/* Footer */}
       <footer style={{ padding: "28px 32px", borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center", color: "rgba(255,255,255,0.2)", fontSize: 13 }}>
-        © {new Date().getFullYear()} Lydia · Built with Next.js
+        © {new Date().getFullYear()} Lydia Rich · Built with Next.js + AI tools
       </footer>
     </main>
   );
