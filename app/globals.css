@@ -24,3 +24,88 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Blog post card hover */
+.blog-card {
+  transition: border-color 0.2s, background 0.2s;
+}
+.blog-card:hover {
+  border-color: rgba(167, 139, 250, 0.3) !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Blog prose — rendered markdown content */
+.blog-prose h1,
+.blog-prose h2,
+.blog-prose h3 {
+  color: white;
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+  line-height: 1.3;
+}
+.blog-prose h1 { font-size: 2em; }
+.blog-prose h2 { font-size: 1.5em; }
+.blog-prose h3 { font-size: 1.25em; }
+.blog-prose p {
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.85;
+  margin-bottom: 1.25em;
+}
+.blog-prose a {
+  color: #a78bfa;
+  text-decoration: underline;
+}
+.blog-prose a:hover {
+  color: #c4b5fd;
+}
+.blog-prose strong {
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+}
+.blog-prose ul,
+.blog-prose ol {
+  color: rgba(255, 255, 255, 0.65);
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+  line-height: 1.85;
+}
+.blog-prose li {
+  margin-bottom: 0.5em;
+}
+.blog-prose blockquote {
+  border-left: 3px solid #a78bfa;
+  padding-left: 16px;
+  color: rgba(255, 255, 255, 0.5);
+  font-style: italic;
+  margin: 1.5em 0;
+}
+.blog-prose code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.9em;
+  font-family: var(--font-geist-mono), monospace;
+}
+.blog-prose pre {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 20px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.blog-prose pre code {
+  background: none;
+  padding: 0;
+}
+.blog-prose img {
+  border-radius: 12px;
+  max-width: 100%;
+  margin: 1.5em 0;
+}
+.blog-prose hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 2em 0;
+}
