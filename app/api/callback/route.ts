@@ -30,15 +30,18 @@ export async function GET(req: NextRequest) {
     return new NextResponse(`OAuth error: ${data.error_description}`, { status: 400 });
   }
 
-  const html = `
-<!doctype html>
+  const token = data.access_token;
+  const html = `<!doctype html>
 <html><body><script>
 (function() {
-  function sendMsg(msg) {
-    var p = window.opener || window.parent;
-    p.postMessage(msg, window.location.origin);
+  var token = "${token}";
+  var opener = window.opener;
+  if (opener) {
+    opener.postMessage(
+      "authorization:github:success:" + token,
+      opener.location.origin
+    );
   }
-  sendMsg("authorization:github:success:" + ${JSON.stringify(JSON.stringify({ token: data.access_token, provider: "github" }))});
 })();
 </script></body></html>`;
 
