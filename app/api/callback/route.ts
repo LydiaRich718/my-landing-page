@@ -9,20 +9,27 @@ export async function GET(req: NextRequest) {
     return new NextResponse("Missing code parameter", { status: 400 });
   }
 
-  const tokenRes = await fetch("https://github.com/login/oauth/access_token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      client_id: process.env.GITHUB_OAUTH_CLIENT_ID || "Ov23livQO9IZp2Sz0YG6",
-      client_secret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
-      code,
-    }),
-  });
-
-  const data = await tokenRes.json();
+  let data;
+  try {
+    const tokenRes = await fetch("https://github.com/login/oauth/access_token", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        client_id: process.env.GITHUB_OAUTH_CLIENT_ID || "Ov23livQO9IZp2Sz0YG6",
+        client_secret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
+        code,
+      }),
+    });
+    data = await tokenRes.json();
+  } catch (err) {
+    return new NextResponse(
+      `<html><body><h2>Token Exchange Failed</h2><p>${String(err)}</p></body></html>`,
+      { status: 500, headers: { "Content-Type": "text/html" } }
+    );
+  }
 
   if (data.error) {
     return new NextResponse(
@@ -32,35 +39,41 @@ export async function GET(req: NextRequest) {
   }
 
   const token = data.access_token;
+  const provider = "github";
 
   const html = `<!doctype html>
-<html><body>
+<html><head><title>Authenticating...</title></head><body>
+<p id="status">Completing authentication...</p>
 <script>
 (function() {
-  var token = "${token}";
-  var msg = "authorization:github:success:" + token;
+  var token = ${JSON.stringify(token)};
+  var provider = ${JSON.stringify(provider)};
 
-  // Try popup postMessage first (multiple attempts for timing)
-  function tryPostMessage(attempts) {
-    var opener = window.opener;
-    if (opener) {
-      opener.postMessage(msg, "*");
-      if (attempts > 0) {
-        setTimeout(function() { tryPostMessage(attempts - 1); }, 200);
-      } else {
-        setTimeout(function() { window.close(); }, 300);
-      }
-    } else {
-      // No opener — redirect flow. Store token so CMS can find it.
-      localStorage.setItem("decap-cms-user", JSON.stringify({ token: token, name: "", backendName: "github" }));
-      localStorage.setItem("netlify-cms-user", JSON.stringify({ token: token, name: "", backendName: "github" }));
-      document.body.innerHTML = "<p>Authenticated! Redirecting...</p>";
-      window.location.replace("/admin/");
-    }
+  function sendMessage(opener) {
+    opener.postMessage(
+      "authorization:" + provider + ":success:" + token,
+      opener.location.origin
+    );
   }
 
-  // Small delay to let opener reference settle
-  setTimeout(function() { tryPostMessage(3); }, 100);
+  var opener = window.opener;
+  if (opener) {
+    sendMessage(opener);
+    // Retry a few times in case CMS listener isn't ready
+    setTimeout(function() { sendMessage(opener); }, 300);
+    setTimeout(function() { sendMessage(opener); }, 800);
+    setTimeout(function() { sendMessage(opener); }, 1500);
+    document.getElementById("status").textContent = "Authenticated! This window will close.";
+    setTimeout(function() { window.close(); }, 2000);
+  } else {
+    document.getElementById("status").textContent = "Authenticated! Redirecting...";
+    localStorage.setItem("netlify-cms-user", JSON.stringify({
+      token: token,
+      name: "",
+      backendName: "github"
+    }));
+    setTimeout(function() { window.location.replace("/admin/"); }, 500);
+  }
 })();
 </script>
 </body></html>`;

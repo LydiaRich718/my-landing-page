@@ -4,59 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Content Manager</title>
-  <script>window.CMS_MANUAL_INIT = true;</script>
-  <style>
-    .login-btn {
-      display: inline-block;
-      margin: 20vh auto;
-      padding: 16px 32px;
-      font-size: 18px;
-      background: #24292e;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: center;
-    }
-    .login-btn:hover { background: #444d56; }
-    .login-container { text-align: center; }
-  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    // Check if we already have a token stored (from OAuth callback redirect)
-    (function() {
-      var stored = localStorage.getItem("decap-cms-user");
-      if (stored) {
-        try {
-          var parsed = JSON.parse(stored);
-          if (parsed.token) {
-            // Token exists, let CMS handle it
-            initCMS();
-            return;
-          }
-        } catch(e) {}
-      }
-
-      // No token — show custom login button that does a full redirect (no popup)
-      var container = document.createElement("div");
-      container.className = "login-container";
-      container.innerHTML = '<button class="login-btn" onclick="window.location.href=\'/api/auth\'">Login with GitHub</button>';
-      document.body.appendChild(container);
-    })();
-
-    function initCMS() {
-      CMS.init({
-        config: {
-          load_config_file: false,
-          backend: {
-            name: "github",
-            repo: "LydiaRich718/my-landing-page",
-            branch: "main",
-            base_url: window.location.origin,
-            auth_endpoint: "/api/auth"
-          },
+    CMS.init({
+      config: {
+        backend: {
+          name: "github",
+          repo: "LydiaRich718/my-landing-page",
+          branch: "main",
+          base_url: window.location.origin,
+          auth_endpoint: "/api/auth"
+        },
         media_folder: "public/images/blog",
         public_folder: "/images/blog",
         collections: [
@@ -79,8 +39,7 @@
           }
         ]
       }
-      });
-    }
+    });
   </script>
 </body>
 </html>
