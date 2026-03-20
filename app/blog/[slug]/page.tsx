@@ -1,35 +1,32 @@
 import Link from "next/link";
-import { getAllSlugs, getPostBySlug } from "@/lib/blog";
+import { getAllSlugs, getPostBySlug } from "@/sanity/queries";
+import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+
+export const revalidate = 60;
 
 interface Props {
   params: Promise<{ slug: string }>;
 }
 
 export async function generateStaticParams() {
-  return getAllSlugs().map((slug) => ({ slug }));
+  const slugs = await getAllSlugs();
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  try {
-    const post = await getPostBySlug(slug);
-    return { title: `${post.title} — Lydia Rich`, description: post.description };
-  } catch {
-    return { title: "Post Not Found" };
-  }
+  const post = await getPostBySlug(slug);
+  if (!post) return { title: "Post Not Found" };
+  return { title: `${post.title} — Lydia Rich`, description: post.description };
 }
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
+  const post = await getPostBySlug(slug);
 
-  let post;
-  try {
-    post = await getPostBySlug(slug);
-  } catch {
-    notFound();
-  }
+  if (!post) notFound();
 
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white" style={{ fontFamily: "var(--font-geist-sans), Arial, sans-serif" }}>
@@ -48,12 +45,10 @@ export default async function BlogPostPage({ params }: Props) {
       <article style={{ paddingTop: 140, paddingBottom: 96, paddingLeft: 32, paddingRight: 32, position: "relative" }}>
         <div style={{ position: "absolute", top: "10%", left: "50%", transform: "translateX(-50%)", width: 500, height: 500, background: "rgba(124,58,237,0.08)", borderRadius: "50%", filter: "blur(120px)", pointerEvents: "none" }} />
         <div style={{ maxWidth: 720, margin: "0 auto", position: "relative" }}>
-          {/* Back link */}
           <Link href="/blog" style={{ fontSize: 14, color: "#a78bfa", textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6, marginBottom: 32 }}>
             &larr; Back to Blog
           </Link>
 
-          {/* Header */}
           <p style={{ fontSize: 13, color: "rgba(255,255,255,0.4)", marginBottom: 12 }}>
             {new Date(post.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}
           </p>
@@ -62,7 +57,7 @@ export default async function BlogPostPage({ params }: Props) {
               {post.title}
             </span>
           </h1>
-          {post.tags.length > 0 && (
+          {post.tags && post.tags.length > 0 && (
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 40 }}>
               {post.tags.map((tag) => (
                 <span key={tag} style={{ fontSize: 12, padding: "4px 12px", borderRadius: 9999, background: "rgba(167,139,250,0.1)", color: "#a78bfa", fontWeight: 500 }}>
@@ -72,11 +67,9 @@ export default async function BlogPostPage({ params }: Props) {
             </div>
           )}
 
-          {/* Content */}
-          <div
-            className="blog-prose"
-            dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-          />
+          <div className="blog-prose">
+            {post.body ? <PortableText value={post.body} /> : null}
+          </div>
         </div>
       </article>
     </main>

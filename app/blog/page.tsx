@@ -1,8 +1,10 @@
 import Link from "next/link";
-import { getAllPosts } from "@/lib/blog";
+import { getAllPosts } from "@/sanity/queries";
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export const revalidate = 60; // Revalidate every 60 seconds
+
+export default async function BlogPage() {
+  const posts = await getAllPosts();
 
   return (
     <main className="min-h-screen bg-[#0a0a0f] text-white" style={{ fontFamily: "var(--font-geist-sans), Arial, sans-serif" }}>
@@ -66,7 +68,7 @@ export default function BlogPage() {
                 <p style={{ fontSize: 15, color: "rgba(255,255,255,0.55)", lineHeight: 1.6, marginBottom: 12 }}>
                   {post.description}
                 </p>
-                {post.tags.length > 0 && (
+                {post.tags && post.tags.length > 0 && (
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
                     {post.tags.map((tag) => (
                       <span key={tag} style={{ fontSize: 12, padding: "4px 12px", borderRadius: 9999, background: "rgba(167,139,250,0.1)", color: "#a78bfa", fontWeight: 500 }}>
