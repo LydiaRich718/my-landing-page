@@ -6,7 +6,7 @@ export async function GET(req: NextRequest) {
   const state = crypto.randomBytes(16).toString("hex");
 
   const params = new URLSearchParams({
-    client_id: process.env.GITHUB_OAUTH_CLIENT_ID!,
+    client_id: process.env.GITHUB_OAUTH_CLIENT_ID || "Ov23livQO9IZp2Sz0YG6",
     redirect_uri: `${siteUrl}/api/callback`,
     scope: "repo,user",
     state,

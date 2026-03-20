@@ -16,7 +16,7 @@ export async function GET(req: NextRequest) {
       Accept: "application/json",
     },
     body: JSON.stringify({
-      client_id: process.env.GITHUB_OAUTH_CLIENT_ID,
+      client_id: process.env.GITHUB_OAUTH_CLIENT_ID || "Ov23livQO9IZp2Sz0YG6",
       client_secret: process.env.GITHUB_OAUTH_CLIENT_SECRET,
       code,
     }),
