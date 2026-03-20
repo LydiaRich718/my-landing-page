@@ -33,29 +33,34 @@ export async function GET(req: NextRequest) {
 
   const token = data.access_token;
 
-  // This script tries both popup (window.opener) and same-window approaches
   const html = `<!doctype html>
 <html><body>
-<p>Authorizing...</p>
 <script>
 (function() {
   var token = "${token}";
   var msg = "authorization:github:success:" + token;
-  var target = window.opener || window.parent;
 
-  if (target && target !== window) {
-    target.postMessage(msg, "*");
-    setTimeout(function() { window.close(); }, 500);
-  } else {
-    // Same-window redirect fallback — store token and go back to admin
-    document.body.innerHTML = "<p>Authentication successful. Redirecting...</p>";
-    localStorage.setItem("netlify-cms-user", JSON.stringify({
-      token: token,
-      name: "",
-      backendName: "github"
-    }));
-    window.location.href = "/admin/";
+  // Try popup postMessage first (multiple attempts for timing)
+  function tryPostMessage(attempts) {
+    var opener = window.opener;
+    if (opener) {
+      opener.postMessage(msg, "*");
+      if (attempts > 0) {
+        setTimeout(function() { tryPostMessage(attempts - 1); }, 200);
+      } else {
+        setTimeout(function() { window.close(); }, 300);
+      }
+    } else {
+      // No opener — redirect flow. Store token so CMS can find it.
+      localStorage.setItem("decap-cms-user", JSON.stringify({ token: token, name: "", backendName: "github" }));
+      localStorage.setItem("netlify-cms-user", JSON.stringify({ token: token, name: "", backendName: "github" }));
+      document.body.innerHTML = "<p>Authenticated! Redirecting...</p>";
+      window.location.replace("/admin/");
+    }
   }
+
+  // Small delay to let opener reference settle
+  setTimeout(function() { tryPostMessage(3); }, 100);
 })();
 </script>
 </body></html>`;
