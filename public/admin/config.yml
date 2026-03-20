@@ -2,8 +2,8 @@ backend:
   name: github
   repo: LydiaRich718/my-landing-page
   branch: main
-  auth_type: pkce
-  app_id: Ov23livQO9IZp2Sz0YG6 # Replace with your GitHub OAuth App Client ID
+  base_url: https://www.lydiarich.com
+  auth_endpoint: /api/auth
 
 media_folder: "public/images/blog"
 public_folder: "/images/blog"
