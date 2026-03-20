@@ -4,11 +4,9 @@ export const dynamic = "force-dynamic";
 
 export async function GET(req: NextRequest) {
   const code = req.nextUrl.searchParams.get("code");
-  const state = req.nextUrl.searchParams.get("state");
-  const savedState = req.cookies.get("oauth_state")?.value;
 
-  if (!code || !state || state !== savedState) {
-    return new NextResponse("Invalid OAuth state", { status: 403 });
+  if (!code) {
+    return new NextResponse("Missing code parameter", { status: 400 });
   }
 
   const tokenRes = await fetch("https://github.com/login/oauth/access_token", {
@@ -27,27 +25,42 @@ export async function GET(req: NextRequest) {
   const data = await tokenRes.json();
 
   if (data.error) {
-    return new NextResponse(`OAuth error: ${data.error_description}`, { status: 400 });
+    return new NextResponse(
+      `<html><body><h2>OAuth Error</h2><p>${data.error}: ${data.error_description}</p></body></html>`,
+      { status: 400, headers: { "Content-Type": "text/html" } }
+    );
   }
 
   const token = data.access_token;
+
+  // This script tries both popup (window.opener) and same-window approaches
   const html = `<!doctype html>
-<html><body><script>
+<html><body>
+<p>Authorizing...</p>
+<script>
 (function() {
   var token = "${token}";
-  var opener = window.opener;
-  if (opener) {
-    opener.postMessage(
-      "authorization:github:success:" + token,
-      opener.location.origin
-    );
+  var msg = "authorization:github:success:" + token;
+  var target = window.opener || window.parent;
+
+  if (target && target !== window) {
+    target.postMessage(msg, "*");
+    setTimeout(function() { window.close(); }, 500);
+  } else {
+    // Same-window redirect fallback — store token and go back to admin
+    document.body.innerHTML = "<p>Authentication successful. Redirecting...</p>";
+    localStorage.setItem("netlify-cms-user", JSON.stringify({
+      token: token,
+      name: "",
+      backendName: "github"
+    }));
+    window.location.href = "/admin/";
   }
 })();
-</script></body></html>`;
+</script>
+</body></html>`;
 
-  const response = new NextResponse(html, {
+  return new NextResponse(html, {
     headers: { "Content-Type": "text/html" },
   });
-  response.cookies.delete("oauth_state");
-  return response;
 }
