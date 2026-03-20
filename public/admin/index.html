@@ -8,7 +8,39 @@
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    CMS.init({ config: { load_config_file: true, config_url: "/admin/config.yml" } });
+    CMS.init({
+      config: {
+        load_config_file: false,
+        backend: {
+          name: "github",
+          repo: "LydiaRich718/my-landing-page",
+          branch: "main",
+          auth_type: "pkce",
+          app_id: "Ov23livQO9IZp2Sz0YG6"
+        },
+        media_folder: "public/images/blog",
+        public_folder: "/images/blog",
+        collections: [
+          {
+            name: "blog",
+            label: "Blog Posts",
+            folder: "content/blog",
+            create: true,
+            slug: "{{slug}}",
+            extension: "md",
+            fields: [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false },
+              { label: "Description", name: "description", widget: "string" },
+              { label: "Tags", name: "tags", widget: "list", default: [] },
+              { label: "Cover Image", name: "image", widget: "image", required: false },
+              { label: "Draft", name: "draft", widget: "boolean", default: false },
+              { label: "Body", name: "body", widget: "markdown" }
+            ]
+          }
+        ]
+      }
+    });
   </script>
 </body>
 </html>
