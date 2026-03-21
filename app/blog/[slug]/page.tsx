@@ -1,8 +1,29 @@
 import Link from "next/link";
 import { getAllSlugs, getPostBySlug } from "@/sanity/queries";
 import { PortableText } from "@portabletext/react";
+import imageUrlBuilder from "@sanity/image-url";
+import { client } from "@/sanity/client";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+
+const builder = imageUrlBuilder(client);
+
+const portableTextComponents = {
+  types: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    image: ({ value }: { value: any }) => {
+      if (!value?.asset?._ref) return null;
+      const url = builder.image(value).width(1200).auto("format").url();
+      return (
+        <img
+          src={url}
+          alt={value.alt || ""}
+          style={{ borderRadius: 12, maxWidth: "100%", margin: "1.5em 0" }}
+        />
+      );
+    },
+  },
+};
 
 export const revalidate = 60;
 
@@ -68,7 +89,7 @@ export default async function BlogPostPage({ params }: Props) {
           )}
 
           <div className="blog-prose">
-            {post.body ? <PortableText value={post.body} /> : null}
+            {post.body ? <PortableText value={post.body} components={portableTextComponents} /> : null}
           </div>
         </div>
       </article>
