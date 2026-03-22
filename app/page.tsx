@@ -11,7 +11,7 @@ export default function Home() {
         <span className="text-xl font-bold" style={{ background: "linear-gradient(to right, #a78bfa, #f472b6, #fb923c)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
           Lydia Rich
         </span>
-        <div className="hidden md:flex gap-8 text-sm">
+        <div className="flex flex-wrap gap-4 md:gap-8 text-xs md:text-sm">
           {["About", "Work", "Projects", "Skills", "Contact"].map((item) => (
             <a key={item} href={`#${item.toLowerCase()}`} style={{ color: "rgba(255,255,255,0.6)", textDecoration: "none" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "white")}
